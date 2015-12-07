@@ -49,21 +49,30 @@ class Circuit<ImpulseType: Impulse> {  // Signal
             return
         }
         
-        if let filter = currentEtch.filter {
-            if !filter(impulse) {
-                recursiveSendImpulseToEtches(impulse, etches: remainingEtches)
-                return
-            }
+        // if let filter = currentEtch.filter {
+        //    if !filter(impulse) {
+        //        recursiveSendImpulseToEtches(impulse, etches: remainingEtches)
+        //        return
+        //    }
+        // }
+        
+        var value: AnyObject!
+        if let unwrap = currentEtch.unwrap, unwrappedValue = unwrap(impulse) {
+            value = unwrappedValue
+        } else {
+            recursiveSendImpulseToEtches(impulse, etches: remainingEtches)
+            return
         }
         
         let queue = currentEtch.queue ?? self.defaultDispatchQueue
         dispatch_async(queue) { _ in
-            if let impulses = currentEtch.dispatch(impulse) {
+            if let impulses = currentEtch.dispatch(value) {
                 self.sendImpulses(impulses)
             }
-            self.recursiveSendImpulseToEtches(impulse, etches: remainingEtches)
-            return
         }
+        
+        self.recursiveSendImpulseToEtches(impulse, etches: remainingEtches)
+        return
     }
 }
 
@@ -74,15 +83,19 @@ struct Etch<ImpulseType: Impulse> { // "Observer"
     /// When the etch should permanently cease to receieve impulses.
     private(set) internal var alive: (() -> Bool) = { true }
     
-    /// Which impuluses this etch should be dispatched for.
-    private(set) internal var filter: (ImpulseType -> Bool)? = nil
+    /// Which impulses this etch should be dispatched for.
+    // private(set) internal var filter: (ImpulseType -> Bool)? = nil
+    
+    /// Filters and unwraps the impulse.
+    /// If this block returns nil, the dispatch block will not be called.
+    private(set) internal var unwrap: (ImpulseType -> AnyObject?)? = nil
     
     /// Preferred scheduler to on which to run dispatch if necessary.
     /// If not provided, the circuit will run it on a default queue.
     private(set) internal var queue: dispatch_queue_t? = nil
     
     /// The code to run in response to a matching Impulse.
-    private(set) internal var dispatch: (ImpulseType -> [ImpulseType]?) = { _ in nil }
+    private(set) internal var dispatch: (AnyObject -> [ImpulseType]?) = { _ in nil }
     
     internal func withAlive(block: (() -> Bool)) -> Etch {
         var etch = self
@@ -90,9 +103,15 @@ struct Etch<ImpulseType: Impulse> { // "Observer"
         return etch
     }
     
-    internal func withFilter(block: (ImpulseType -> Bool)?) -> Etch {
+    // internal func withFilter(block: (ImpulseType -> Bool)?) -> Etch {
+    //    var etch = self
+    //    etch.filter = block
+    //    return etch
+    // }
+    
+    internal func withUnwrap(unwrap: (ImpulseType -> AnyObject?)?) -> Etch {
         var etch = self
-        etch.filter = block
+        etch.unwrap = unwrap
         return etch
     }
     
@@ -102,10 +121,16 @@ struct Etch<ImpulseType: Impulse> { // "Observer"
         return etch
     }
     
-    internal func withDispatch(dispatch: (ImpulseType -> [ImpulseType]?)) -> Etch {
+    internal func withDispatch(dispatch: (AnyObject -> [ImpulseType]?)) -> Etch {
         var etch = self
         etch.dispatch = dispatch
         return etch
+    }
+}
+
+extension Etch {
+    func withAliveHost(host: AnyObject) -> Etch {
+        return self.withAlive { [weak host] in host == nil }
     }
 }
 
@@ -125,7 +150,7 @@ func <++<ImpulseType: Impulse>(lhs: Circuit<ImpulseType>, rhs: Etch<ImpulseType>
 
 /// EXAMPLES
 
-struct Sentinel { }
+class Sentinel { }
 
 enum ModelImpulse: Impulse {
     case RequestReadTodos(Sentinel)
@@ -135,9 +160,9 @@ enum ModelImpulse: Impulse {
 class ModelServer {
     init(_ circuit: Circuit<ModelImpulse>) {
         circuit <++ Etch<ModelImpulse>()
-            .withAlive { [weak self] in self == nil }
-            .withFilter { if case ModelImpulse.RequestReadTodos(_) = $0 { return true }; return false }
-            .withDispatch { impulse -> [ModelImpulse]? in
+            .withAliveHost(self)
+            .withUnwrap { if case let .RequestReadTodos(value) = $0 { return value }; return nil }
+            .withDispatch { _ -> [ModelImpulse]? in
                 // do some work
                 return [ModelImpulse.ResponseTodos(["todo"])]
             }
@@ -147,13 +172,12 @@ class ModelServer {
 class ViewModelServer {
     init(_ circuit: Circuit<ModelImpulse>) {
         circuit <++ Etch<ModelImpulse>()
-            .withAlive { [weak self] in self == nil }
-            .withFilter { if case ModelImpulse.ResponseTodos(_) = $0 { return true }; return false }
+            .withAliveHost(self)
+            .withUnwrap { if case let .ResponseTodos(value) = $0 { return value }; return nil }
             .withQueue(dispatch_get_main_queue())
-            .withDispatch { impulse -> [ModelImpulse]? in
-                if case ModelImpulse.ResponseTodos(let todos) = impulse {
-                    print(todos)
-                }
+            .withDispatch { value -> [ModelImpulse]? in
+                let todos = value as! [String]
+                print(todos)
                 return nil
             }
     }
