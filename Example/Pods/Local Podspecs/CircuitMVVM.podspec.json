@@ -1,0 +1,25 @@
+{
+  "name": "CircuitMVVM",
+  "version": "0.1.0",
+  "summary": "A short description of CircuitMVVM.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/CircuitMVVM",
+  "license": "MIT",
+  "authors": {
+    "Christopher Trott": "chris@twocentstudios.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/CircuitMVVM.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "CircuitMVVM": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

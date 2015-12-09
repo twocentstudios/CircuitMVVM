@@ -1,0 +1,6 @@
+framework module Pods_CircuitMVVM_Tests {
+  umbrella header "Pods-CircuitMVVM_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
