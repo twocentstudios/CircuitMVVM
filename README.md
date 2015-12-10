@@ -1,29 +1,19 @@
 # CircuitMVVM
 
-[![CI Status](http://img.shields.io/travis/Christopher Trott/CircuitMVVM.svg?style=flat)](https://travis-ci.org/Christopher Trott/CircuitMVVM)
-[![Version](https://img.shields.io/cocoapods/v/CircuitMVVM.svg?style=flat)](http://cocoapods.org/pods/CircuitMVVM)
-[![License](https://img.shields.io/cocoapods/l/CircuitMVVM.svg?style=flat)](http://cocoapods.org/pods/CircuitMVVM)
-[![Platform](https://img.shields.io/cocoapods/p/CircuitMVVM.svg?style=flat)](http://cocoapods.org/pods/CircuitMVVM)
+CircuitMVVM is an simple, experimental event dispatching and observation library. It was built to assist in writing EventMVVM-style iOS apps. See this blog post for more: [EventMVVM](https://twocentstudios.com/2015/12/08/an-experimental-ios-architecture-based-on-radical-decoupling).
+
+There is currently no example project and only a few tests.
+
+Warning: I would not use this for anything.
 
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
-
-## Installation
-
-CircuitMVVM is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "CircuitMVVM"
-```
-
-## Author
-
-Christopher Trott, chris@twocentstudios.com
-
 ## License
 
 CircuitMVVM is available under the MIT license. See the LICENSE file for more info.
+
+## About
+
+CircuitMVVM was created by [Christopher Trott](http://twitter.com/twocentstudios).
