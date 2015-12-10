@@ -1,21 +1,23 @@
 
 import Foundation
 
-class Circuit<ImpulseType: Impulse> {  // Signal
+public class Circuit<ImpulseType: Impulse> {  // Signal
     private var etches = [Etch<ImpulseType>]()
     
     private let impulseQueue: dispatch_queue_t = dispatch_queue_create("circuit_impulse_queue", DISPATCH_QUEUE_SERIAL)
     private let defaultDispatchQueue: dispatch_queue_t = dispatch_queue_create("circuit_default_dispatch_queue", DISPATCH_QUEUE_CONCURRENT)
     
+    public init() { }
+    
     /// Add an etch to this circuit from any thread.
-    internal func addEtch(etch: Etch<ImpulseType>) {
+    public func addEtch(etch: Etch<ImpulseType>) {
         dispatch_async(impulseQueue) { _ in
             self.etches.append(etch)
         }
     }
     
     /// Send an impulse from any thread.
-    internal func sendImpulse(impulse: ImpulseType) {
+    public func sendImpulse(impulse: ImpulseType) {
         dispatch_async(impulseQueue) { _ in
             self.recursiveSendImpulseToEtches(impulse, etches: self.etches)
         }
@@ -76,7 +78,7 @@ class Circuit<ImpulseType: Impulse> {  // Signal
     }
 }
 
-struct Etch<ImpulseType: Impulse> { // "Observer"
+public struct Etch<ImpulseType: Impulse> { // "Observer"
     /// A unique identifier for this Etch. For supporting equatable.
     private let id = NSUUID()
     
@@ -97,7 +99,9 @@ struct Etch<ImpulseType: Impulse> { // "Observer"
     /// The code to run in response to a matching Impulse.
     private(set) internal var dispatch: (AnyObject -> [ImpulseType]?) = { _ in nil }
     
-    internal func withAlive(block: (() -> Bool)) -> Etch {
+    public init() { }
+    
+    public func withAlive(block: (() -> Bool)) -> Etch {
         var etch = self
         etch.alive = block
         return etch
@@ -109,40 +113,40 @@ struct Etch<ImpulseType: Impulse> { // "Observer"
     //    return etch
     // }
     
-    internal func withUnwrap(unwrap: (ImpulseType -> AnyObject?)?) -> Etch {
+    public func withUnwrap(unwrap: (ImpulseType -> AnyObject?)?) -> Etch {
         var etch = self
         etch.unwrap = unwrap
         return etch
     }
     
-    internal func withQueue(queue: dispatch_queue_t?) -> Etch {
+    public func withQueue(queue: dispatch_queue_t?) -> Etch {
         var etch = self
         etch.queue = queue
         return etch
     }
     
-    internal func withDispatch(dispatch: (AnyObject -> [ImpulseType]?)) -> Etch {
+    public func withDispatch(dispatch: (AnyObject -> [ImpulseType]?)) -> Etch {
         var etch = self
         etch.dispatch = dispatch
         return etch
     }
 }
 
-extension Etch {
-    func withAliveHost(host: AnyObject) -> Etch {
-        return self.withAlive { [weak host] in host == nil }
+public extension Etch {
+    public func withAliveHost(host: AnyObject) -> Etch {
+        return self.withAlive { [weak host] in host != nil }
     }
 }
 
 extension Etch: Equatable {}
-func ==<T: Impulse>(lhs: Etch<T>, rhs: Etch<T>) -> Bool {
+public func ==<T: Impulse>(lhs: Etch<T>, rhs: Etch<T>) -> Bool {
     return lhs.id == rhs.id
 }
 
 /// A message. Intended to be an enum type.
-protocol Impulse { } // "Event"
+public protocol Impulse { } // "Event"
 
 infix operator <++ { associativity right precedence 93 }
-func <++<ImpulseType: Impulse>(lhs: Circuit<ImpulseType>, rhs: Etch<ImpulseType>) {
+public func <++<ImpulseType: Impulse>(lhs: Circuit<ImpulseType>, rhs: Etch<ImpulseType>) {
     lhs.addEtch(rhs)
 }
