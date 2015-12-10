@@ -21,5 +21,6 @@
     "CircuitMVVM": [
       "Pod/Assets/*.png"
     ]
-  }
+  },
+  "frameworks": "Foundation"
 }

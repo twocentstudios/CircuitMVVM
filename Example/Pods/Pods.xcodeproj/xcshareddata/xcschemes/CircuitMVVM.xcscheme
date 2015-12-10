@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5B48126FA53BFF8C07D131D9'
+               BlueprintIdentifier = 'F67CCC66516A086F29AAE612'
                BlueprintName = 'CircuitMVVM'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'CircuitMVVM.framework'>

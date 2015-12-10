@@ -19,6 +19,7 @@
 		1DC37082346ED3D954CA984BBF7DCEFB /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2005F86F2C2D05CDE00BB78EF02D6D4 /* ExampleGroup.swift */; };
 		1E28F9362956B758C4C981D3C1129C90 /* BeGreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CD67A0263B5D926517C112081F48B2 /* BeGreaterThan.swift */; };
 		1E3804ABBCF920BBCA8F8259DEEB4310 /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38715BF4570032AE706B97AB11365E48 /* ExampleMetadata.swift */; };
+		1EBE928EDBA4AB58988CB83CA47B39D9 /* CircuitMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341C1A879D2EC003DA3E6A786582F343 /* CircuitMVVM.swift */; };
 		222550702DB7D83748864083F76B7E49 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A039912FDC46FCB2AF6DCEEB91ADB4 /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		285EE4B18A7944D303C050E4440334CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E351727CD07BB90B2A3CAE2C2433F6C5 /* Foundation.framework */; };
 		2AD36B9FEF3417A3BC5AB1B1D59868FC /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC9D0077C69A720B9DD2BB12344FD893 /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +38,7 @@
 		5AB3E1F0BDEFDB4BB7DB8AF6E3E942CA /* QuickConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = F1D4A64A54F414359EC782444B27597B /* QuickConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D05BA1C24684DAF564BE05EE0C0F533 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2543809E4D3D9755B94735346ACDFF03 /* QCKDSL.m */; };
 		5EE95BB1C4A95984BA261F8E5EB4F500 /* CircuitMVVM-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6264F4522999F3DFF5081F9E2531E00E /* CircuitMVVM-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65B441FEA9F8E5ED6A0FA52825AF1A0A /* CircuitMVVM-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C0CF2EA3FF3445511103314A530D09 /* CircuitMVVM-dummy.m */; };
 		6AF890323202781092DAD75D0CA3F5DC /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA1EFFE836005E11B9D420692E9E50C /* Example.swift */; };
 		6F010BC05F8F48FDE06C183F67827882 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 8880B82EFD81A0D6EE2BBD27A39D61BA /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73695FA6A6CDFBB13C0CC73C2E5126C0 /* Nimble-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8E9634CF58B22F95DF5AA222CDAF9B8 /* Nimble-dummy.m */; };
@@ -47,7 +49,6 @@
 		7BFD25B1BB1116D8AC47E2C3874C5B76 /* ObjCMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B922FF75D982F502B345AE30399F97 /* ObjCMatcher.swift */; };
 		7DA9FF8513AA48310B15A0744A541818 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4930275AC98E3FD0F3BC81A7D08B8591 /* SourceLocation.swift */; };
 		831D33A4C5C5BBC1EC158D9A236C61D7 /* NimbleXCTestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5596CB4CEA7B7B71461C9ECE75263656 /* NimbleXCTestHandler.swift */; };
-		8418DACC2AD362A174C306317F1FBD72 /* CircuitMVVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD09A81B2F5071183B4D659E0D2BA7 /* CircuitMVVM.swift */; };
 		879C494AE7A4988B89CEF9542DD7C8B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E351727CD07BB90B2A3CAE2C2433F6C5 /* Foundation.framework */; };
 		8A99E29293FDAFE49E121675A0C0479A /* QuickSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 62241019A9DFE31F82A2CDF8690A163C /* QuickSpec.m */; };
 		8D0BF52FF564A170A3D1DE28C27B233E /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = F689A549CFB432AE0684F3EA3BA8D2FF /* Poll.swift */; };
@@ -82,7 +83,6 @@
 		E6E7B15FAD6C56681511813DB2666478 /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84D274316F8C6F9695294FB40D7596F /* AssertionRecorder.swift */; };
 		E8D164DCA97FD18621D7757329FE3E3A /* Pods-CircuitMVVM_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6E34300A05CEAFAF6B4ADCD032C4A7A /* Pods-CircuitMVVM_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8E408C723EAC51C3E4CF99472CF7D8E /* NSString+QCKSelectorName.h in Headers */ = {isa = PBXBuildFile; fileRef = 64F492985EB6550A418DD3DB1BCDE146 /* NSString+QCKSelectorName.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		ECAE38EC1DCFC03D04E24DDC75F770D0 /* CircuitMVVM-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C0CF2EA3FF3445511103314A530D09 /* CircuitMVVM-dummy.m */; };
 		ED635CB56E17AF56B9BA93ACA5519E61 /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8C281E400A6FABAD082CEA7263B2A /* ExampleHooks.swift */; };
 		F10FD3129985704FA1610F84FB98EDF5 /* Stringers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31CE50F8B4B99D3C229D2438892ED5B /* Stringers.swift */; };
 		F1D4A8A1FC68EFA7F45945908D70A352 /* BeNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02297D692E5CA1B1C21CCCDA1853BA44 /* BeNil.swift */; };
@@ -158,6 +158,7 @@
 		2B9040AB08CA7AEB727960E284F746A4 /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Nimble/DSL.swift; sourceTree = "<group>"; };
 		2FE24AE8654BDA8234080C23F6335E26 /* BeEmpty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeEmpty.swift; path = Nimble/Matchers/BeEmpty.swift; sourceTree = "<group>"; };
 		33DD2CC5441C4540A072B29E4A257A9D /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Quick/DSL/DSL.swift; sourceTree = "<group>"; };
+		341C1A879D2EC003DA3E6A786582F343 /* CircuitMVVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CircuitMVVM.swift; sourceTree = "<group>"; };
 		38715BF4570032AE706B97AB11365E48 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		3F1975D001BFB447009180BAF8C14ADB /* Quick-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Quick-prefix.pch"; sourceTree = "<group>"; };
 		40FBD52025077E5788ADCE71EF040393 /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Nimble/objc/NMBExceptionCapture.h; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		4E8EBDD6FA3788BAB028EE5B1367F6A2 /* Pods-CircuitMVVM_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CircuitMVVM_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4F2CCEF958AF4E4C4F073031905F2CE2 /* AllPass.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AllPass.swift; path = Nimble/Matchers/AllPass.swift; sourceTree = "<group>"; };
 		50CAB7DEB1DC7431CF5A3B4FAC7F1F8A /* Pods-CircuitMVVM_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CircuitMVVM_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		53AD09A81B2F5071183B4D659E0D2BA7 /* CircuitMVVM.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CircuitMVVM.swift; sourceTree = "<group>"; };
 		54BC3268759E7DB38A0E192F06A1BD06 /* HaveCount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HaveCount.swift; path = Nimble/Matchers/HaveCount.swift; sourceTree = "<group>"; };
 		5596CB4CEA7B7B71461C9ECE75263656 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		58CD57ED9D79412A49A037E8EAA4AF42 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
@@ -442,14 +442,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		846FC90E138658E66903F1733958825E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				53AD09A81B2F5071183B4D659E0D2BA7 /* CircuitMVVM.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		8F29E9621F2E4347FEA6F6D7F0748038 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +454,7 @@
 		909D0ACC31A0535340DA142527514255 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				846FC90E138658E66903F1733958825E /* Classes */,
+				C2ECB774AE0D652E93F85EE3884945CC /* Classes */,
 			);
 			path = Pod;
 			sourceTree = "<group>";
@@ -487,6 +479,14 @@
 				09E4C4DAD8448FB3462E86085BDBF929 /* Pods-CircuitMVVM_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C2ECB774AE0D652E93F85EE3884945CC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				341C1A879D2EC003DA3E6A786582F343 /* CircuitMVVM.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		D877BEEDC4F6494B4B10BC732B32A32B /* Nimble */ = {
@@ -666,7 +666,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBE7BB494C361B2DA85C6B610AEFEF7B /* Build configuration list for PBXNativeTarget "CircuitMVVM" */;
 			buildPhases = (
-				BA266165DA22FC053BC0B68D8142F888 /* Sources */,
+				68063613FF5E360DF6B889B43CA4FEAD /* Sources */,
 				20906D4F96A859141C81395D9E5354AF /* Frameworks */,
 				1D7F1B484C31DC20AE823F9512CF3D63 /* Resources */,
 				21E8852581C30D311D6EDAED80BAB937 /* Headers */,
@@ -776,6 +776,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68063613FF5E360DF6B889B43CA4FEAD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B441FEA9F8E5ED6A0FA52825AF1A0A /* CircuitMVVM-dummy.m in Sources */,
+				1EBE928EDBA4AB58988CB83CA47B39D9 /* CircuitMVVM.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		935BB0CE4D06266E39A337245EB7A788 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -788,15 +797,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BA266165DA22FC053BC0B68D8142F888 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ECAE38EC1DCFC03D04E24DDC75F770D0 /* CircuitMVVM-dummy.m in Sources */,
-				8418DACC2AD362A174C306317F1FBD72 /* CircuitMVVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
